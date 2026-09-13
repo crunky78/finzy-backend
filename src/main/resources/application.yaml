@@ -24,3 +24,8 @@ server:
 jwt:
   secret: finzy-secret-key-please-change-this-in-production-2024
   expiration: 86400000
+
+cloudinary:
+  cloud-name: dtifs8jeb
+  api-key: 211697358775511
+  api-secret: Eho5KArrt5VjhGudFNxoQrDQCkk

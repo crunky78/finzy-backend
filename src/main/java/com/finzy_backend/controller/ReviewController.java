@@ -64,4 +64,16 @@ public class ReviewController {
             @RequestParam(defaultValue = "10") int limit) {
         return ResponseEntity.ok(reviewService.getRanking(limit));
     }
+
+    // 좋아요
+    @PostMapping("/{id}/like")
+    public ResponseEntity<ReviewResponse> likeReview(@PathVariable Long id) {
+        return ResponseEntity.ok(reviewService.likeReview(id));
+    }
+
+    // 나도 샀어요
+    @PostMapping("/{id}/me-buy")
+    public ResponseEntity<ReviewResponse> meBuyReview(@PathVariable Long id) {
+        return ResponseEntity.ok(reviewService.meBuyReview(id));
+    }
 }

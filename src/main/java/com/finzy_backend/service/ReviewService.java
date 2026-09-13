@@ -112,4 +112,22 @@ public class ReviewService {
                 .filter(r -> r != null)
                 .collect(Collectors.toList());
     }
+
+    // 좋아요
+    @Transactional
+    public ReviewResponse likeReview(Long reviewId) {
+        Review review = reviewRepository.findById(reviewId)
+                .orElseThrow(() -> new RuntimeException("리뷰를 찾을 수 없어요"));
+        review.setLikeCount(review.getLikeCount() + 1);
+        return ReviewResponse.from(reviewRepository.save(review));
+    }
+
+    // 나도 샀어요
+    @Transactional
+    public ReviewResponse meBuyReview(Long reviewId) {
+        Review review = reviewRepository.findById(reviewId)
+                .orElseThrow(() -> new RuntimeException("리뷰를 찾을 수 없어요"));
+        review.setMeBuyCount(review.getMeBuyCount() + 1);
+        return ReviewResponse.from(reviewRepository.save(review));
+    }
 }
